@@ -131,6 +131,7 @@ k8s_defaults = repository_rule(
         "namespace": attr.string(mandatory = False),
         "resolver": attr.string(mandatory = False),
         "user": attr.string(mandatory = False),
+        "repo": attr.string(mandatory = False),
     },
     implementation = _impl,
 )
