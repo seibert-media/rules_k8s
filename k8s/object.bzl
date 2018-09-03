@@ -66,6 +66,12 @@ def _impl(ctx):
             resolved_tag = ctx.expand_make_variables("tag", tag, {})
             target = ctx.attr.images[tag]
             image = _get_layers(ctx, ctx.label.name, image_target_dict[target])
+            if tag == "":
+                tag = '{}'.format(ctx.label).replace("//", "").replace("cmd/", "").replace("src/main/java/", "").replace("/", "-")
+            if tag.startswith(":"):
+                tag = '{}'.format(ctx.label).replace("//", "").replace("cmd/", "").replace("src/main/java/", "").replace("/", "-").split(":", 1)[0] + tag
+            if ctx.attr.repo:
+                tag = ctx.attr.repo + tag
 
             image_spec = {"name": resolved_tag}
             if image.get("legacy"):
