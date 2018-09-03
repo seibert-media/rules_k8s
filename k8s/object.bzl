@@ -277,6 +277,7 @@ _common_attrs = {
         allow_single_file = True,
     ),
     "namespace": attr.string(),
+    "repo": attr.string(),
     "resolver": attr.label(
         default = Label("//k8s/go/cmd/resolver"),
         cfg = "host",
